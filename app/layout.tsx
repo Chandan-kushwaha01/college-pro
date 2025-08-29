@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Rethink_Sans } from 'next/font/google'
+import "./globals.css";
 
 const geist = Rethink_Sans({
   subsets: ['latin'],
   display: 'swap',
 })
-import "./globals.css";
 
 
 
