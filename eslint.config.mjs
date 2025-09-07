@@ -9,6 +9,9 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+// detect environment
+const isDev = process.env.NODE_ENV !== "production";
+
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
@@ -19,6 +22,11 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules: {
+      // Disable in dev, enable in prod
+      "@typescript-eslint/no-explicit-any": isDev ? "off" : "error",
+      "no-console": isDev ? "off" : "warn",
+    },
   },
 ];
 
